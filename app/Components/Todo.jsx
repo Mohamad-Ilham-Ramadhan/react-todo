@@ -7,7 +7,7 @@ class Todo extends React.Component {
 	}
 
 	render() {
-		const { todos, inputValue, addTodo, updateInputValue } = this.props;
+		const { todos, inputValue, addTodo, updateInputValue, deleteTodo } = this.props;
 
 		return (
 			<div className="todo">
@@ -27,7 +27,7 @@ class Todo extends React.Component {
 						<li key={todo.id}>
 							<div>
 								{todo.task}
-								<Button className="btn-delete">x</Button>
+								<Button deleteTodo={ deleteTodo.bind( null, todo.id )} className="btn-delete">x</Button>
 							</div>
 						</li>
 					) }

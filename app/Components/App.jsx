@@ -35,15 +35,16 @@ class App extends React.Component {
 
 				addTodo={ this.addTodo }
 				updateInputValue={ this.updateInputValue }
+				deleteTodo={ this.deleteTodo }
 			/>
 		)
 	}
 
-	updateInputValue = (e) => {
+	updateInputValue = (event) => {
 		this.setState({
-			inputValue: e.target.value
+			inputValue: event.target.value
 		})
-	}
+	};
 
 	addTodo = ( value ) => {
 		this.setState( ( prevState ) => {
@@ -54,6 +55,12 @@ class App extends React.Component {
 				inputValue: ''
 			}
 		})
+	};
+
+	deleteTodo = ( id , e) => {
+		this.setState( ( prevState ) => ({
+			todos: prevState.todos.filter( todo => todo.id !== id )
+		}) )
 	}
 }
 

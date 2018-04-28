@@ -6,10 +6,10 @@ class Button extends React.Component {
 	}
 
 	render() {
-		const { children, className, addTodo } = this.props 
+		const { children, className, addTodo, deleteTodo } = this.props 
 
 		return (
-			<button onClick={addTodo} className={className}>
+			<button onClick={addTodo || deleteTodo} className={className}>
 				{ children }
 			</button>
 		)
