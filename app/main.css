@@ -19,10 +19,27 @@
 	border-radius: 5px;
 }
 
+.todo-list {
+	list-style: none;
+}
+
+.todo-item div {
+	margin: 10px;
+}
+
+.todo-item .btn-delete {
+	margin-left: 20px;
+	visibility: hidden;
+}
+.todo-item:hover .btn-delete{
+	visibility: visible;
+}
+
 .btn { 
 	padding: 10px;
 	background: #4598dc;
 	border: none;
 	border-radius: 3px;
 	color: #fff;
+	cursor: pointer;
 }

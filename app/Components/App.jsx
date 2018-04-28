@@ -11,15 +11,18 @@ class App extends React.Component {
 			todos: [
 				{
 					id: uuid.v4(),
-					task: 'Learn React'
+					task: 'Learn React',
+					checked: true
 				},
 				{
 					id: uuid.v4(),
-					task: 'Learn React until bleed'
+					task: 'Learn React until bleed',
+					checked: false
 				},
 				{
 					id: uuid.v4(),
-					task: 'Become Front end developer'
+					task: 'Become Front end developer',
+					checked: true
 				},
 			],
 			inputValue: ''
@@ -37,15 +40,23 @@ class App extends React.Component {
 				addTodo={ this.addTodo }
 				updateInputValue={ this.updateInputValue }
 				deleteTodo={ this.deleteTodo }
-				checkEnter={ this.checkEnter }
+				todoCheck={ this.todoCheck }
 			/>
 		)
 	}
 
-	checkEnter = ( value, e) => {
-		if ( e.key == "Enter" ) {
-			this.addTodo( value );
-		}
+	todoCheck = ( id ) => {
+		this.setState( ( prevState) => {
+			const checked = prevState.todos.map( todo => {
+				if ( todo.id === id) {
+					todo.checked = !todo.checked;
+				}
+				return todo;
+			});
+			return {
+				todos: checked
+			}
+		})
 	};
 
 	updateInputValue = (e) => {
@@ -55,11 +66,15 @@ class App extends React.Component {
 	};
 
 	addTodo = ( value ) => {
+		if ( value.trim() === "" ) {
+			alert('Please write something!');
+
+			return;
+		}
+
 		this.setState( ( prevState ) => {
-			prevState.todos.push({ id: uuid.v4(), task: value });
-			
 			return {
-				todos: prevState.todos,
+				todos: prevState.todos.concat({ id: uuid.v4(), task: value, checked: false }),
 				inputValue: ''
 			}
 		})
