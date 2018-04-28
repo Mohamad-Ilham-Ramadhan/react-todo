@@ -1,0 +1,28 @@
+.todo {
+	background: #181718;
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 5px;
+	padding: 20px;
+	color: #bfbfbf;
+}
+
+.todo-add {
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.todo-add input {
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+}
+
+.btn { 
+	padding: 10px;
+	background: #4598dc;
+	border: none;
+	border-radius: 3px;
+	color: #fff;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import uuid from 'uuid';
 import Todo from './Todo';
+import '../main.css';
 
 class App extends React.Component {
 	constructor(props) {
@@ -36,13 +37,20 @@ class App extends React.Component {
 				addTodo={ this.addTodo }
 				updateInputValue={ this.updateInputValue }
 				deleteTodo={ this.deleteTodo }
+				checkEnter={ this.checkEnter }
 			/>
 		)
 	}
 
-	updateInputValue = (event) => {
+	checkEnter = ( value, e) => {
+		if ( e.key == "Enter" ) {
+			this.addTodo( value );
+		}
+	};
+
+	updateInputValue = (e) => {
 		this.setState({
-			inputValue: event.target.value
+			inputValue: e.target.value
 		})
 	};
 
@@ -57,7 +65,7 @@ class App extends React.Component {
 		})
 	};
 
-	deleteTodo = ( id , e) => {
+	deleteTodo = ( id ) => {
 		this.setState( ( prevState ) => ({
 			todos: prevState.todos.filter( todo => todo.id !== id )
 		}) )
