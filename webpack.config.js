@@ -26,6 +26,7 @@ const common = merge([
 			new HtmlWebpackPlugin({
 				title: 'todo',
 				template: require('html-webpack-template'),
+				inject: false, // remove duplicates css tags and script tags
 				appMountId: 'app'
 			}),
 			new webpack.HotModuleReplacementPlugin()
