@@ -2,16 +2,21 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+// parts config
 const parts = require('./webpack.parts');
+
+const PATHS = {
+	app: path.join(__dirname, 'app'),
+	build: path.join(__dirname, 'build')
+}
 
 const common = merge([
 	{
 		entry: {
-			app: path.join(__dirname, 'app'),
+			app: PATHS.app,
 		},
 		output: {
-			path: path.join(__dirname, 'build'),
+			path: PATHS.build,
 			filename: '[name].js',
 		},
 		resolve: {
@@ -50,6 +55,7 @@ const development = merge([
 ]);
 
 const production = merge([
+	parts.clean( PATHS.build ),
 	parts.loadJavaScript(),
 	parts.extractCSS(),
 ]);
